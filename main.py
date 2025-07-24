@@ -7,17 +7,17 @@ from typing import Literal
 
 from dotenv import load_dotenv
 
-from .ai_chat import AIChat
-from .config import (
+from stt.ai_chat import AIChat
+from stt.config import (
     CHARACTER_MAP,
     GEMINI_MODEL,
     SYSTEM_INSTRUCTION_TEMPLATE,
     TALK_END_KEYWORD,
     CharacterOptions,
 )
-from .googlevoice import GoogleTTSClient
-from .nijivoice import NijiVoiceClient
-from .talk import TalkController
+from stt.googlevoice import GoogleTTSClient
+from stt.nijivoice import NijiVoiceClient
+from stt.talk import TalkController
 
 load_dotenv()  # 環境変数の読み込み
 
