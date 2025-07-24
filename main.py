@@ -6,6 +6,7 @@ import random
 from typing import Literal
 
 from dotenv import load_dotenv
+from google.genai import Client  # type: ignore
 
 from stt.ai_chat import AIChat
 from stt.config import (
@@ -46,13 +47,21 @@ async def talk(
 
     print(f'選択されたキャラクター: {character.name}')
 
+    # Gemini クライアントを作成
+    # AIChat と GoogleTTSClient の両方で使用
+    genai_client = Client(api_key=gemini_api_key)
+
+    # AI チャットインスタンスを作成
+    # キャラクターのシステムインストラクションを設定
+    # キャラクターの名前と指示をテンプレートに埋め込む
+    # モデルは GEMINI_MODEL で指定されたものを使用
     ai_chat = AIChat(
         system_instruction=SYSTEM_INSTRUCTION_TEMPLATE.format(
             character_name=character.name,
             character_instruction=character.instruction,
         ),
         model=GEMINI_MODEL,
-        api_key=gemini_api_key,
+        client=genai_client,
     )
 
     # 会話コントローラーを作成して会話を開始
@@ -69,7 +78,7 @@ async def talk(
         )
         if mode == 'nijivoice'
         else GoogleTTSClient.create_from_character_id(
-            client=ai_chat.client,
+            client=genai_client,
             character_id=character.id,
         ),
     )

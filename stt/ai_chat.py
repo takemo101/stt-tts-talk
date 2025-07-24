@@ -10,15 +10,10 @@ class AIChat:
 
     _chat: chats.Chat | None = None
 
-    def __init__(self, system_instruction: str, model: str, api_key: str):
+    def __init__(self, system_instruction: str, model: str, client: Client):
         self._system_instruction = system_instruction
         self._model = model
-        self._api_key = api_key
-        self._client = self._create_client()
-
-    def _create_client(self) -> Client:
-        """Gemini クライアントを作成する"""
-        return Client(api_key=self._api_key)
+        self._client = client
 
     def _create_chat(self) -> chats.Chat:
         """チャットセッションを作成する"""
@@ -52,8 +47,3 @@ class AIChat:
             raise AIResponseError('AIの返答がありません。')
 
         return response_text
-
-    @property
-    def client(self) -> Client:
-        """Gemini クライアントを取得する"""
-        return self._client
