@@ -31,13 +31,10 @@ class AIChat:
 
     def send_message(self, message: str) -> str:
         """メッセージを送信し、応答を取得する
-
         Args:
             message: 送信するメッセージ
-
         Returns:
             str: AI の応答テキスト
-
         Raises:
             AIResponseError: AI の応答が空の場合
         """
