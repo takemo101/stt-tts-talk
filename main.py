@@ -24,6 +24,8 @@ load_dotenv()  # 環境変数の読み込み
 
 async def talk(
     mode: str = 'google',
+    # 何も指定しない場合はランダムにキャラクターを選択
+    # キャラクターを指定する場合は CharacterOptions を渡す
     character: CharacterOptions = random.choice(CHARACTER_MAP),
 ) -> None:
     """音声対話を開始するメイン関数
