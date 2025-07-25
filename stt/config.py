@@ -1,5 +1,3 @@
-"""アプリケーションの設定とキャラクター定義"""
-
 from dataclasses import dataclass
 from typing import Literal
 

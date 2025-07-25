@@ -1,5 +1,3 @@
-"""会話制御を行うメインクラス"""
-
 from .ai_chat import AIChat
 from .exceptions import VoiceSynthesisError
 from .output import OutputWriter, StandardOutputWriter

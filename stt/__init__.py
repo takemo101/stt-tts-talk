@@ -1,5 +1,3 @@
-"""STT (Speech-to-Text) および TTS (Text-to-Speech) 機能を提供するパッケージ"""
-
 from .ai_chat import AIChat
 from .config import (
     CHARACTER_MAP,

@@ -1,5 +1,3 @@
-"""AI チャット機能を提供するモジュール"""
-
 from google.genai import Client, chats, types  # type: ignore
 
 from .exceptions import AIResponseError

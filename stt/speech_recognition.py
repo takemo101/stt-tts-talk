@@ -1,5 +1,3 @@
-"""音声認識機能を提供するモジュール"""
-
 import speech_recognition as sr  # type: ignore
 
 from .effect import EffectPlayer, EffectPlayerForMac

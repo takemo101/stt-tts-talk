@@ -1,6 +1,3 @@
-"""アプリケーション固有の例外クラス"""
-
-
 class STTAppError(Exception):
     """STTアプリケーションのベース例外クラス"""
 
