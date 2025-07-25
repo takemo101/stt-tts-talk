@@ -86,9 +86,9 @@ async def talk(
 
 
 def main():
-    voice_client = os.getenv('VOICE_CLIENT', 'google')
+    mode = os.getenv('VOICE_CLIENT_MODE', 'google')
 
-    asyncio.run(talk(voice_client))
+    asyncio.run(talk(mode))
 
 
 if __name__ == '__main__':
