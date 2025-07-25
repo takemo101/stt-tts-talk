@@ -17,6 +17,7 @@ from stt.config import (
 )
 from stt.googlevoice import GoogleTTSClient
 from stt.nijivoice import NijiVoiceClient
+from stt.output import StandardOutputWriter
 from stt.talk import TalkController
 
 load_dotenv()  # 環境変数の読み込み
@@ -46,7 +47,13 @@ async def talk(
     if not nijivoice_api_key:
         raise OSError('NIJIVOICE_API_KEYが設定されていません。')
 
-    print(f'選択されたキャラクター: {character.name}')
+    # 出力コントローラーを作成
+    # 標準出力を使用する場合は StandardOutputWriter を使用
+    # 無音出力を使用する場合は SilentOutputWriter を使用
+    output = StandardOutputWriter()
+
+    output.print(f'選択された音声合成モード: {mode}')
+    output.print(f'選択されたキャラクター: {character.name}')
 
     # Gemini クライアントを作成
     # AIChat と GoogleTTSClient の両方で使用
@@ -82,6 +89,7 @@ async def talk(
             client=genai_client,
             character_id=character.id,
         ),
+        output_writer=output,
     )
 
     await controller.start_talk()

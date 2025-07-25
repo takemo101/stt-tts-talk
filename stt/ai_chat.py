@@ -6,7 +6,12 @@ from .exceptions import AIResponseError
 
 
 class AIChat:
-    """AI チャット機能を提供するクラス"""
+    """AI チャット機能を提供するクラス
+    Attributes:
+        _system_instruction (str): システムインストラクション
+        _model (str): 使用するモデル名
+        _client (Client): Google GenAI クライアント
+    """
 
     _chat: chats.Chat | None = None
 

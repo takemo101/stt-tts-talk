@@ -2,7 +2,7 @@ import os
 from abc import ABC, abstractmethod
 
 
-class RecEffectPlayer(ABC):
+class EffectPlayer(ABC):
     """録音効果音の抽象クラス"""
 
     @abstractmethod
@@ -16,7 +16,7 @@ class RecEffectPlayer(ABC):
         pass
 
 
-class RecEffectPlayerForMac(RecEffectPlayer):
+class EffectPlayerForMac(EffectPlayer):
     """macOS用の録音効果音クラス"""
 
     def start(self) -> None:

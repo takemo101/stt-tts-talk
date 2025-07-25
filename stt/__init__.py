@@ -18,6 +18,7 @@ from .exceptions import (
 )
 from .googlevoice import GoogleTTSClient
 from .nijivoice import NijiVoiceClient
+from .output import OutputWriter, StandardOutputWriter
 from .speech_recognition import SpeechRecognizer
 from .talk import TalkController
 from .voice import VoiceClient, is_installed, play
@@ -42,6 +43,9 @@ __all__ = [
     'GoogleTTSClient',
     'NijiVoiceClient',
     'VoiceClient',
+    # 出力制御
+    'OutputWriter',
+    'StandardOutputWriter',
     # 音声認識
     'SpeechRecognizer',
     # 会話制御
