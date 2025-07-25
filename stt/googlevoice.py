@@ -19,7 +19,7 @@ class GoogleTTSClient(VoiceClient):
     CHARACTER_VOICE_MAP: dict[CharacterID, str] = {
         'gyaru': 'Kore',
         'shy': 'Leda',
-        'ikemen': 'Zephyr',
+        'ikemen': 'Fenrir',
     }
 
     def __init__(self, client: Client, voice_name: str):
