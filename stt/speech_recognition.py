@@ -19,6 +19,8 @@ class SpeechRecognizer:
     # 音声認識のタイムアウト時間
     SPEECH_TIMEOUT = 10.0
 
+    PHRASE_TIME_LIMIT = 10.0
+
     def __init__(
         self,
         effect_player: EffectPlayer = EffectPlayerForMac(),
@@ -45,7 +47,9 @@ class SpeechRecognizer:
                 self._output.print('録音中... 話してください')
                 self._effect_player.start()
                 audio = self._recognizer.listen(
-                    source, timeout=self.SPEECH_TIMEOUT
+                    source,
+                    timeout=self.SPEECH_TIMEOUT,
+                    phrase_time_limit=self.PHRASE_TIME_LIMIT,
                 )
 
             # 音声認識の終了時に効果音を再生
