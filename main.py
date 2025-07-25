@@ -3,7 +3,6 @@
 import asyncio
 import os
 import random
-from typing import Literal
 
 from dotenv import load_dotenv
 from google.genai import Client  # type: ignore
@@ -24,12 +23,12 @@ load_dotenv()  # 環境変数の読み込み
 
 
 async def talk(
-    mode: Literal['nijivoice', 'google'] = 'nijivoice',
+    mode: str = 'google',
     character: CharacterOptions = random.choice(CHARACTER_MAP),
 ) -> None:
     """音声対話を開始するメイン関数
     Args:
-        mode (Literal['nijivoice', 'google']): 使用する音声合成サービスのモード
+        mode (str): 使用する音声合成サービスのモード ('google' または 'nijivoice')
         character (CharacterOptions): 対話に使用するキャラクターのオプション
     Raises:
         OSError: 必要な環境変数が設定されていない場合
@@ -87,7 +86,9 @@ async def talk(
 
 
 def main():
-    asyncio.run(talk())
+    voice_client = os.getenv('VOICE_CLIENT', 'google')
+
+    asyncio.run(talk(voice_client))
 
 
 if __name__ == '__main__':
